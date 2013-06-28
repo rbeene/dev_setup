@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'thor'
+require 'pry'
 
 class Tmux < Thor
   desc "up", "Setup environment"
@@ -34,7 +35,7 @@ class Tmux < Thor
 
     def restore_backup(file_name)
       destination = expand_path(file_name)
-      filename = file_name.gsub("_old", "")
+      file_name = expand_path("#{file_name}_old")
       if File.exists?(file_name)
         sys_call("rm #{destination}", "Removing existing version at #{destination}")
         sys_call("cp #{file_name} #{destination}", "Restoring backup")
