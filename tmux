@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
-
+require 'rubygems'
 require 'thor'
 
 class Tmux < Thor
   desc "up", "Setup environment"
   def up
     sys_call("brew install tmux", "Installing tmux")
-    sys_call("brew install reattach_to_user_namespace", "Installing reattach_to_user_namespace")
+    sys_call("brew install reattach-to-user-namespace", "Installing reattach-to-user-namespace")
     sys_call("git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle", "Cloning vundle")
 
     copy_file(".tmux.conf", "~/.tmux.conf")
@@ -21,8 +21,8 @@ class Tmux < Thor
   def down
     restore_backup("~/.vimrc")
     restore_backup("~/.tmux.conf")
-    restore_backup("~.vimrc.bundles")
-    restore_backup("~.zshrc")
+    restore_backup("~/.vimrc.bundles")
+    restore_backup("~/.zshrc")
   end
 
   private
@@ -33,15 +33,17 @@ class Tmux < Thor
     end
 
     def restore_backup(file_name)
-      file_name = expand_path(file_name)
-      destination = file_name.gsub("_old", "")
-      if File.exists?(destination))
-        sys_call("rm #{destination}", "Removing existing version at #{file_name}")
+      destination = expand_path(file_name)
+      filename = file_name.gsub("_old", "")
+      if File.exists?(file_name)
+        sys_call("rm #{destination}", "Removing existing version at #{destination}")
         sys_call("cp #{file_name} #{destination}", "Restoring backup")
+      else
+        sys_call("rm #{destination}", "Removing existing version at #{destination}")
       end
     end
 
-    def copy_file(file_name, destination, overwrite=false))
+    def copy_file(file_name, destination, overwrite=false)
       file_name = expand_path(file_name)
       destination = expand_path(destination)
 
@@ -51,7 +53,7 @@ class Tmux < Thor
         backup_file(destination)
       end
 
-      sys_call("cp ./#{file_name} #{destination}", "Copying file #{file_name} to #{destination}")
+      sys_call("cp #{file_name} #{destination}", "Copying file #{file_name} to #{destination}")
     end
 
     def copy_folder(folder, destination)
