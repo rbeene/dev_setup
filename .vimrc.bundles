@@ -1,0 +1,23 @@
+set nocompatible
+
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" Define bundles via Github repos
+Bundle 'croaky/vim-colors-github'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-scripts/ctags.vim'
+Bundle 'vim-scripts/greplace.vim'
+Bundle 'vim-scripts/tComment'
+Bundle 'jgdavey/vim-turbux'
+Bundle 'jgdavey/tslime.vim'
+Bundle 'kien/ctrlp.vim'
+filetype on
