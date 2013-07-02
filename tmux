@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'thor'
-require 'pry'
 
+# this script will setup tmux with some plugins that are useful for Rails development
 class Tmux < Thor
   desc "up", "Setup environment"
   def up
@@ -38,7 +38,7 @@ class Tmux < Thor
       file_name = expand_path("#{file_name}_old")
       if File.exists?(file_name)
         sys_call("rm #{destination}", "Removing existing version at #{destination}")
-        sys_call("cp #{file_name} #{destination}", "Restoring backup")
+        sys_call("mv #{file_name} #{destination}", "Restoring backup")
       else
         sys_call("rm #{destination}", "Removing existing version at #{destination}")
       end
