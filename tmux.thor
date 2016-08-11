@@ -13,7 +13,7 @@ class Tmux < Thor
     copy_file(".tmux.conf", "~/.tmux.conf")
     copy_file(".vimrc", "~/.vimrc")
     copy_file(".vimrc.bundles", "~/.vimrc.bundles")
-    copy_file(".zshrc", "~/.zshrc")
+    #copy_file(".zshrc", "~/.zshrc")
     copy_folder("./bundles", "~/.vim")
     sys_call("vim +BundleInstall", "Setting up bundles")
   end
