@@ -11,13 +11,11 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
+syntax on
 
 filetype plugin indent on
+
+au BufRead,BufNewFile *.thor set filetype=ruby
 
 augroup vimrcEx
   au!
@@ -129,4 +127,7 @@ let g:snippetsEmu_key = "<S-Tab>"
 let g:syntastic_check_on_open=1
 
 let g:turbux_command_rspec  = 'bundle exec rspec'
-colorscheme github
+colorscheme monokai
+hi Normal ctermbg=NONE
+let &t_Co=256
+autocmd BufWritePre * :%s/\s\+$//e
