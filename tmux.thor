@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'rubygems'
-require 'thor'
+require 'thor 
 
 # this script will setup tmux with some plugins that are useful for Rails development
 class Tmux < Thor
