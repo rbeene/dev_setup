@@ -20,4 +20,8 @@ Bundle 'vim-scripts/tComment'
 Bundle 'jgdavey/vim-turbux'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'flazz/vim-colorschemes'
+Bundle 'ekalinin/Dockerfile.vim.git'
+Bundle 'elixir-lang/vim-elixir'
 filetype on
